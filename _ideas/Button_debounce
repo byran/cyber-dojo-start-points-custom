@@ -1,0 +1,7 @@
+Provided:
+* Interface for Input pin
+* Interface for Timer
+
+Exercise:
+Create code that detects when the button is clicked accounting for contact
+noise when the button is pressed and released

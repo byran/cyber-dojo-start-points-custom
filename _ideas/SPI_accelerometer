@@ -1,0 +1,7 @@
+Provided:
+* Interface for SPI port
+* Interface for Output pin (for chip select)
+* Commands and responses for the accelerometer
+
+Exercise:
+Create a driver that reads the acceleration from the accelerometer
