@@ -1,0 +1,17 @@
+{
+  "visible_filenames": [
+    "hiker.cpp",
+    "hiker.hpp",
+    "hiker.tests.cpp",
+    "tube_line_types.hpp",
+    "tube_lines.cpp",
+    "tube_lines.hpp",
+    "instructions",
+    "makefile",
+    "cyber-dojo.sh"
+  ],
+  "filename_extension" : ".cpp",
+  "display_name": "London Underground, C++ (clang++) GoogleMock",
+  "unit_test_framework": "google_test",
+  "image_name": "cyberdojofoundation/clangpp_googlemock"
+}

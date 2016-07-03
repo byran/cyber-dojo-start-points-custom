@@ -1,0 +1,14 @@
+The London Underground can be confusing to navigate to newcomers. Create
+a system that given a start station and end station outputs the shortest
+route between the two stations.
+
+Remember the Circle line loops whereas all other lines do not.
+
+The shortest route is defined as:
+* Passing through the least number of stations
+* Having the least number of line changes
+
+Assumptions:
+* The distance between consecutive stations on a line is the same
+* All trains run the entire length of the line (no trains terminate before
+  the final station of the line)

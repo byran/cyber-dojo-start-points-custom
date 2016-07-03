@@ -1,0 +1,13 @@
+
+{
+  "visible_filenames": [
+    "test_hiker.py",
+    "hiker.py",
+    "tube_map.json",
+    "cyber-dojo.sh"
+  ],
+  "filename_extension" : ".py",
+  "display_name": "London Underground, Python py.test",
+  "unit_test_framework": "python_pytest",
+  "image_name": "cyberdojofoundation/python_pytest"
+}
