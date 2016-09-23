@@ -1,103 +1,62 @@
 import json
 import os.path
+from os import listdir
+from os.path import isfile, join
 
 def strip_station_name(name):
-    while name.endswith(" "):
-        name = name[:-1]
-
-    if name.endswith(" Station"):
-        name = name[:-8]
-
-    if name.endswith("Underground"):
-        name = name[:-11]
-
-    if name.endswith(" "):
-        name = name[:-1]
-
+    name = name[:-20]
     return name
 
-def station_index(name):
-    if stations.count(name) == 0:
-        stations.append(name)
-    return stations.index(name)
-
-def parse_line(line):
-    with open(line["name"] + '.json') as data_file:
-        stations = json.load(data_file)
-
+def station_id_exists(id):
     for station in stations:
-        station_name = strip_station_name(station["commonName"])
-        line["stations"].append(station_index(station_name))
-
-def cpp_output():
-    print("extern const tube_stations_t stations = {")
-    for station in stations:
-        print("\t{ \"" + station + "\" },")
-    print("};")
-
-    print()
-
-    print("extern const tube_lines_t lines = {")
-    for line in lines:
-        print("\t{ \"" + line["name"] + "\", { ", end="")
-        for id in line["stations"]:
-            print(str(id) + ", ", end="")
-        print("} },")
-    print("};")
-
-def c_output():
-    print("#define number_of_station_names " + str(len(stations)))
-    print("extern const char *station_names[number_of_station_names];")
-    print("#define number_of_tube_lines " + str(len(lines)))
-    print("extern const struct tube_line_t tube_lines[number_of_tube_lines];")
-
-    print()
-
-    print("const char *station_names[number_of_station_names] = {")
-    for station in stations:
-        print("\t\"" + station + "\",")
-    print("};")
-
-    print()
-
-    index = 0
-    for line in lines:
-        print("const int line_" + str(index) + "_stations[] = { ", end="")
-        for id in line["stations"]:
-            print(str(id) + ", ", end="")
-        print("};")
-        index += 1
-
-    print()
-
-    print("const struct tube_line_t tube_lines[number_of_tube_lines] = {")
-    index = 0
-    for line in lines:
-        print("\t{ \"" + line["name"] + "\", line_" + str(index) + "_stations, " + str(len(line["stations"])) + " },")
-        index += 1
-    print("};")
-
+        if(station["id"] == id):
+            return True
+    return False
 
 def json_output():
-    tube_map = {"lines": lines, "stations": stations}
+    tube_map = {"lines": lines} #, "stations": stations}
     print(json.dumps(tube_map, indent=2))
 
-# *** Load and parse ***
+def cpp_output():
+    print("#include \"tube_lines.hpp\"\n")
+    print("std::map<std::string, std::string> const stations = {");
+    for station in stations:
+        print("\t{ \"" + station["id"] + "\", \"" + station["name"] + "\"},")#, end="")
+    print("};\n")
 
-with open('routes.json') as data_file:
-    routes = json.load(data_file)
+    print("std::vector<line_t> const lines = {");
+    for line in lines:
+        print("\t{")
+        print("\t\t\"" + line["name"] + "\",")
+        print("\t\t{")
+        for route in line["routes"]:
+            print("\t\t\t{", end="")
+            for station_id in route["route_stations"]:
+                print(" \"" + station_id + "\", ", end="")
+            print("},")
+        print("\t\t}")
+        print("\t},")
+    print("};")
 
-lines = []
 stations = []
+lines = []
 
-for route in routes:
-    if route["modeName"] == "tube" and os.path.isfile(route["id"] + ".json"):
-        line = {"name": route["id"], "stations": []}
-        lines.append(line)
-    elif route["modeName"] == "tube":
-        print("ERROR: missing line file " + route["id"] + ".json")
+lineFiles = [f for f in listdir("lines_data/") if isfile(join("lines_data/", f))]
 
-for line in lines:
-    parse_line(line)
+for file in lineFiles:
+    with open("lines_data/" + file) as data_file:
+        lineData = json.load(data_file)
+        for station in lineData["stations"]:
+            if(station["stopType"] == 	"NaptanMetroStation"):
+                if(not station_id_exists(station["id"])):
+                    stations.append({"id": station["id"], "name": strip_station_name(station["name"])})
 
-c_output()
+        line_routes = []
+        for route in lineData["orderedLineRoutes"]:
+            route_stations = []
+            for station_id in route["naptanIds"]:
+                route_stations.append(station_id)
+            line_routes.append({"route_name": route["name"], "route_stations": route_stations})
+        lines.append({"name": lineData["lineName"], "routes": line_routes})
+
+cpp_output()
