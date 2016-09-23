@@ -3,7 +3,6 @@
     "hiker.cpp",
     "hiker.hpp",
     "hiker.tests.cpp",
-    "tube_line_types.hpp",
     "tube_lines.cpp",
     "tube_lines.hpp",
     "instructions",
@@ -12,7 +11,7 @@
   ],
 
   "filename_extension" : ".cpp",
-  
+
   "display_name": "London Underground, C++ (clang++) GoogleMock",
 
   "image_name": "cyberdojofoundation/clangpp_googlemock",

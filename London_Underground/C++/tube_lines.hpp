@@ -1,9 +1,19 @@
 #ifndef TUBE_LINES_HPP
 #define TUBE_LINES_HPP
 
-#include "tube_line_types.hpp"
+#include <string>
+#include <vector>
+#include <map>
 
-extern const tube_stations_t stations;
-extern const tube_lines_t lines;
+using route_t = std::vector<std::string>;
+
+struct line_t
+{
+  std::string name;
+  std::vector<route_t> routes;
+};
+
+extern std::map<std::string, std::string> const stations;
+extern std::vector<line_t> const lines;
 
 #endif
