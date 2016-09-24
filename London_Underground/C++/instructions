@@ -1,5 +1,5 @@
 The London Underground can be confusing to navigate to newcomers. Create
-a system that given a start station and end station outputs the shortest
+a system that given a start station and destination station outputs the shortest
 route between the two stations.
 
 Remember the Circle line loops whereas all other lines do not.
@@ -12,3 +12,6 @@ Assumptions:
 * The distance between consecutive stations on a line is the same
 * All trains run the entire length of the line (no trains terminate before
   the final station of the line)
+
+A pdf of the London Underground map can be found at:
+http://content.tfl.gov.uk/standard-tube-map.pdf
