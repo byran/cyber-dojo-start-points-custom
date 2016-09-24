@@ -1,292 +1,364 @@
 #include "tube_lines.hpp"
 
 std::vector<std::string> const stations = {
-	"Barkingside",                // 0
-	"Buckhurst Hill",             // 1
-	"Bethnal Green",              // 2
-	"Bond Street",                // 3
-	"Chancery Lane",              // 4
-	"Debden",                     // 5
-	"East Acton",                 // 6
-	"Epping",                     // 7
-	"Fairlop",                    // 8
-	"Gants Hill",                 // 9
-	"Holborn",                    // 10
-	"Hanger Lane",                // 11
-	"Hainault",                   // 12
-	"Holland Park",               // 13
-	"Loughton",                   // 14
-	"Lancaster Gate",             // 15
-	"Leyton",                     // 16
-	"Leytonstone",                // 17
-	"Marble Arch",                // 18
-	"Mile End",                   // 19
-	"North Acton",                // 20
-	"Newbury Park",               // 21
-	"Notting Hill Gate",          // 22
-	"Northolt",                   // 23
-	"Oxford Circus",              // 24
-	"Perivale",                   // 25
-	"Queensway",                  // 26
-	"Redbridge",                  // 27
-	"Ruislip Gardens",            // 28
-	"Snaresbrook",                // 29
-	"St. Paul's",                 // 30
-	"South Woodford",             // 31
-	"Tottenham Court Road",       // 32
-	"Theydon Bois",               // 33
-	"White City",                 // 34
-	"Woodford",                   // 35
-	"Wanstead",                   // 36
-	"West Acton",                 // 37
-	"Acton Town",                 // 38
-	"Aldgate East",               // 39
-	"Bromley-by-Bow",             // 40
-	"Becontree",                  // 41
-	"Barons Court",               // 42
-	"Bow Road",                   // 43
-	"Bayswater",                  // 44
-	"Chiswick Park",              // 45
-	"Dagenham East",              // 46
-	"Dagenham Heathway",          // 47
-	"Ealing Common",              // 48
-	"Earl's Court",               // 49
-	"East Ham",                   // 50
-	"Embankment",                 // 51
-	"Elm Park",                   // 52
-	"East Putney",                // 53
-	"Edgware Road (Circle Line)", // 54
-	"Fulham Broadway",            // 55
-	"Gloucester Road",            // 56
-	"Hornchurch",                 // 57
-	"High Street Kensington",     // 58
-	"Monument",                   // 59
-	"Mansion House",              // 60
-	"Plaistow",                   // 61
-	"Parsons Green",              // 62
-	"Putney Bridge",              // 63
-	"Ravenscourt Park",           // 64
-	"Stamford Brook",             // 65
-	"Southfields",                // 66
-	"Stepney Green",              // 67
-	"St. James's Park",           // 68
-	"South Kensington",           // 69
-	"Sloane Square",              // 70
-	"Temple",                     // 71
-	"Turnham Green",              // 72
-	"Tower Hill",                 // 73
-	"Upminster Bridge",           // 74
-	"Upton Park",                 // 75
-	"Upney",                      // 76
-	"Wimbledon Park",             // 77
-	"West Kensington",            // 78
-	"Bermondsey",                 // 79
-	"Baker Street",               // 80
-	"Canons Park",                // 81
-	"Dollis Hill",                // 82
-	"Finchley Road",              // 83
-	"Green Park",                 // 84
-	"Kilburn",                    // 85
-	"Kingsbury",                  // 86
-	"Neasden",                    // 87
-	"Queensbury",                 // 88
-	"St. John's Wood",            // 89
-	"Stanmore",                   // 90
-	"Swiss Cottage",              // 91
-	"Southwark",                  // 92
-	"Willesden Green",            // 93
-	"Wembley Park",               // 94
-	"Archway",                    // 95
-	"Angel",                      // 96
-	"Borough",                    // 97
-	"Burnt Oak",                  // 98
-	"Brent Cross",                // 99
-	"Belsize Park",               // 100
-	"Chalk Farm",                 // 101
-	"Colindale",                  // 102
-	"Clapham Common",             // 103
-	"Clapham North",              // 104
-	"Clapham South",              // 105
-	"Colliers Wood",              // 106
-	"Camden Town",                // 107
-	"East Finchley",              // 108
-	"Edgware",                    // 109
-	"Finchley Central",           // 110
-	"Goodge Street",              // 111
-	"Golders Green",              // 112
-	"High Barnet",                // 113
-	"Hendon Central",             // 114
-	"Highgate",                   // 115
-	"Hampstead",                  // 116
-	"Kennington",                 // 117
-	"Leicester Square",           // 118
-	"Morden",                     // 119
-	"Mill Hill East",             // 120
-	"Mornington Crescent",        // 121
-	"Oval",                       // 122
-	"Stockwell",                  // 123
-	"South Wimbledon",            // 124
-	"Totteridge & Whetstone",     // 125
-	"Tooting Bec",                // 126
-	"Tooting Broadway",           // 127
-	"Tufnell Park",               // 128
-	"West Finchley",              // 129
-	"Woodside Park",              // 130
-	"Warren Street",              // 131
-	"Aldgate",                    // 132
-	"Barbican",                   // 133
-	"Euston Square",              // 134
-	"Goldhawk Road",              // 135
-	"Great Portland Street",      // 136
-	"Ladbroke Grove",             // 137
-	"Latimer Road",               // 138
-	"Royal Oak",                  // 139
-	"Shepherd's Bush Market",     // 140
-	"Wood Lane",                  // 141
-	"Westbourne Park",            // 142
-	"Edgware Road (Bakerloo)",    // 143
-	"Kilburn Park",               // 144
-	"Lambeth North",              // 145
-	"Maida Vale",                 // 146
-	"Piccadilly Circus",          // 147
-	"Regent's Park",              // 148
-	"Warwick Avenue",             // 149
-	"Alperton",                   // 150
-	"Arnos Grove",                // 151
-	"Arsenal",                    // 152
-	"Bounds Green",               // 153
-	"Boston Manor",               // 154
-	"Caledonian Road",            // 155
-	"Covent Garden",              // 156
-	"Cockfosters",                // 157
-	"Eastcote",                   // 158
-	"Hillingdon",                 // 159
-	"Hatton Cross",               // 160
-	"Hyde Park Corner",           // 161
-	"Hounslow Central",           // 162
-	"Hounslow East",              // 163
-	"Hounslow West",              // 164
-	"Holloway Road",              // 165
-	"Ickenham",                   // 166
-	"Knightsbridge",              // 167
-	"Manor House",                // 168
-	"North Ealing",               // 169
-	"Northfields",                // 170
-	"Oakwood",                    // 171
-	"Osterley",                   // 172
-	"Park Royal",                 // 173
-	"Ruislip Manor",              // 174
-	"Ruislip",                    // 175
-	"Russell Square",             // 176
-	"Rayners Lane",               // 177
-	"South Ealing",               // 178
-	"Southgate",                  // 179
-	"South Harrow",               // 180
-	"Sudbury Hill",               // 181
-	"Sudbury Town",               // 182
-	"Turnpike Lane",              // 183
-	"Uxbridge",                   // 184
-	"Wood Green",                 // 185
-	"Chesham",                    // 186
-	"Croxley",                    // 187
-	"Moor Park",                  // 188
-	"North Harrow",               // 189
-	"Northwick Park",             // 190
-	"Northwood",                  // 191
-	"Northwood Hills",            // 192
-	"Pinner",                     // 193
-	"Preston Road",               // 194
-	"Watford",                    // 195
-	"West Harrow",                // 196
-	"Pimlico",                    // 197
+	"Barkingside",                               // 0
+	"Buckhurst Hill",                            // 1
+	"Bethnal Green",                             // 2
+	"Bond Street",                               // 3
+	"Bank",                                      // 4
+	"Chancery Lane",                             // 5
+	"Chigwell",                                  // 6
+	"Debden",                                    // 7
+	"East Acton",                                // 8
+	"Ealing Broadway",                           // 9
+	"Epping",                                    // 10
+	"Fairlop",                                   // 11
+	"Greenford",                                 // 12
+	"Grange Hill",                               // 13
+	"Gants Hill",                                // 14
+	"Holborn",                                   // 15
+	"Hanger Lane",                               // 16
+	"Hainault",                                  // 17
+	"Holland Park",                              // 18
+	"Loughton",                                  // 19
+	"Lancaster Gate",                            // 20
+	"Liverpool Street",                          // 21
+	"Leyton",                                    // 22
+	"Leytonstone",                               // 23
+	"Marble Arch",                               // 24
+	"Mile End",                                  // 25
+	"North Acton",                               // 26
+	"Newbury Park",                              // 27
+	"Notting Hill Gate",                         // 28
+	"Northolt",                                  // 29
+	"Oxford Circus",                             // 30
+	"Perivale",                                  // 31
+	"Queensway",                                 // 32
+	"Redbridge",                                 // 33
+	"Ruislip Gardens",                           // 34
+	"Roding Valley",                             // 35
+	"Shepherd's Bush (Central)",                 // 36
+	"Snaresbrook",                               // 37
+	"St. Paul's",                                // 38
+	"South Ruislip",                             // 39
+	"Stratford",                                 // 40
+	"South Woodford",                            // 41
+	"Tottenham Court Road",                      // 42
+	"Theydon Bois",                              // 43
+	"White City",                                // 44
+	"Woodford",                                  // 45
+	"West Ruislip",                              // 46
+	"Wanstead",                                  // 47
+	"West Acton",                                // 48
+	"Acton Town",                                // 49
+	"Aldgate East",                              // 50
+	"Bromley-by-Bow",                            // 51
+	"Becontree",                                 // 52
+	"Blackfriars",                               // 53
+	"Barking",                                   // 54
+	"Barons Court",                              // 55
+	"Bow Road",                                  // 56
+	"Bayswater",                                 // 57
+	"Cannon Street",                             // 58
+	"Chiswick Park",                             // 59
+	"Dagenham East",                             // 60
+	"Dagenham Heathway",                         // 61
+	"Ealing Common",                             // 62
+	"Earl's Court",                              // 63
+	"East Ham",                                  // 64
+	"Embankment",                                // 65
+	"Elm Park",                                  // 66
+	"East Putney",                               // 67
+	"Edgware Road (Circle Line)",                // 68
+	"Fulham Broadway",                           // 69
+	"Gunnersbury",                               // 70
+	"Gloucester Road",                           // 71
+	"Hornchurch",                                // 72
+	"Hammersmith (Dist&Picc Line)",              // 73
+	"High Street Kensington",                    // 74
+	"Kensington (Olympia)",                      // 75
+	"Kew Gardens",                               // 76
+	"Monument",                                  // 77
+	"Mansion House",                             // 78
+	"Paddington",                                // 79
+	"Plaistow",                                  // 80
+	"Parsons Green",                             // 81
+	"Putney Bridge",                             // 82
+	"Richmond",                                  // 83
+	"Ravenscourt Park",                          // 84
+	"Stamford Brook",                            // 85
+	"Southfields",                               // 86
+	"Stepney Green",                             // 87
+	"St. James's Park",                          // 88
+	"South Kensington",                          // 89
+	"Sloane Square",                             // 90
+	"Temple",                                    // 91
+	"Turnham Green",                             // 92
+	"Tower Hill",                                // 93
+	"Upminster Bridge",                          // 94
+	"Upton Park",                                // 95
+	"Upminster",                                 // 96
+	"Upney",                                     // 97
+	"Victoria",                                  // 98
+	"West Brompton",                             // 99
+	"West Ham",                                  // 100
+	"Wimbledon",                                 // 101
+	"Wimbledon Park",                            // 102
+	"West Kensington",                           // 103
+	"Whitechapel",                               // 104
+	"Westminster",                               // 105
+	"Bermondsey",                                // 106
+	"Baker Street",                              // 107
+	"Canning Town",                              // 108
+	"Canons Park",                               // 109
+	"Canada Water",                              // 110
+	"Canary Wharf",                              // 111
+	"Dollis Hill",                               // 112
+	"Finchley Road",                             // 113
+	"Green Park",                                // 114
+	"Kilburn",                                   // 115
+	"Kingsbury",                                 // 116
+	"London Bridge",                             // 117
+	"Neasden",                                   // 118
+	"North Greenwich",                           // 119
+	"Queensbury",                                // 120
+	"St. John's Wood",                           // 121
+	"Stanmore",                                  // 122
+	"Swiss Cottage",                             // 123
+	"Southwark",                                 // 124
+	"West Hampstead",                            // 125
+	"Willesden Green",                           // 126
+	"Waterloo",                                  // 127
+	"Wembley Park",                              // 128
+	"Archway",                                   // 129
+	"Angel",                                     // 130
+	"Balham",                                    // 131
+	"Borough",                                   // 132
+	"Burnt Oak",                                 // 133
+	"Brent Cross",                               // 134
+	"Belsize Park",                              // 135
+	"Chalk Farm",                                // 136
+	"Charing Cross",                             // 137
+	"Colindale",                                 // 138
+	"Clapham Common",                            // 139
+	"Clapham North",                             // 140
+	"Clapham South",                             // 141
+	"Colliers Wood",                             // 142
+	"Camden Town",                               // 143
+	"Elephant & Castle",                         // 144
+	"East Finchley",                             // 145
+	"Edgware",                                   // 146
+	"Euston",                                    // 147
+	"Finchley Central",                          // 148
+	"Goodge Street",                             // 149
+	"Golders Green",                             // 150
+	"High Barnet",                               // 151
+	"Hendon Central",                            // 152
+	"Highgate",                                  // 153
+	"Hampstead",                                 // 154
+	"Kennington",                                // 155
+	"Kentish Town",                              // 156
+	"King's Cross St. Pancras",                  // 157
+	"Leicester Square",                          // 158
+	"Morden",                                    // 159
+	"Moorgate",                                  // 160
+	"Mill Hill East",                            // 161
+	"Mornington Crescent",                       // 162
+	"Old Street",                                // 163
+	"Oval",                                      // 164
+	"Stockwell",                                 // 165
+	"South Wimbledon",                           // 166
+	"Totteridge & Whetstone",                    // 167
+	"Tooting Bec",                               // 168
+	"Tooting Broadway",                          // 169
+	"Tufnell Park",                              // 170
+	"West Finchley",                             // 171
+	"Woodside Park",                             // 172
+	"Warren Street",                             // 173
+	"Aldgate",                                   // 174
+	"Barbican",                                  // 175
+	"Euston Square",                             // 176
+	"Farringdon",                                // 177
+	"Goldhawk Road",                             // 178
+	"Great Portland Street",                     // 179
+	"Hammersmith (H&C Line)",                    // 180
+	"Ladbroke Grove",                            // 181
+	"Latimer Road",                              // 182
+	"Paddington (H&C Line)-Underground",         // 183
+	"Royal Oak",                                 // 184
+	"Shepherd's Bush Market",                    // 185
+	"Wood Lane",                                 // 186
+	"Westbourne Park",                           // 187
+	"Edgware Road (Bakerloo)",                   // 188
+	"Harrow & Wealdstone",                       // 189
+	"Harlesden",                                 // 190
+	"Kenton",                                    // 191
+	"Kilburn Park",                              // 192
+	"Kensal Green",                              // 193
+	"Lambeth North",                             // 194
+	"Maida Vale",                                // 195
+	"Marylebone",                                // 196
+	"North Wembley",                             // 197
+	"Piccadilly Circus",                         // 198
+	"Queen's Park",                              // 199
+	"Regent's Park",                             // 200
+	"Stonebridge Park",                          // 201
+	"South Kenton",                              // 202
+	"Willesden Junction",                        // 203
+	"Warwick Avenue",                            // 204
+	"Wembley Central",                           // 205
+	"Alperton",                                  // 206
+	"Arnos Grove",                               // 207
+	"Arsenal",                                   // 208
+	"Bounds Green",                              // 209
+	"Boston Manor",                              // 210
+	"Caledonian Road",                           // 211
+	"Covent Garden",                             // 212
+	"Cockfosters",                               // 213
+	"Eastcote",                                  // 214
+	"Finsbury Park",                             // 215
+	"Hillingdon",                                // 216
+	"Hatton Cross",                              // 217
+	"Hyde Park Corner",                          // 218
+	"Heathrow Terminal 4",                       // 219
+	"Heathrow Terminal 5",                       // 220
+	"Heathrow Terminals 1-2-3",                  // 221
+	"Hounslow Central",                          // 222
+	"Hounslow East",                             // 223
+	"Hounslow West",                             // 224
+	"Holloway Road",                             // 225
+	"Ickenham",                                  // 226
+	"Knightsbridge",                             // 227
+	"Manor House",                               // 228
+	"North Ealing",                              // 229
+	"Northfields",                               // 230
+	"Oakwood",                                   // 231
+	"Osterley",                                  // 232
+	"Park Royal",                                // 233
+	"Ruislip Manor",                             // 234
+	"Ruislip",                                   // 235
+	"Russell Square",                            // 236
+	"Rayners Lane",                              // 237
+	"South Ealing",                              // 238
+	"Southgate",                                 // 239
+	"South Harrow",                              // 240
+	"Sudbury Hill",                              // 241
+	"Sudbury Town",                              // 242
+	"Turnpike Lane",                             // 243
+	"Uxbridge",                                  // 244
+	"Wood Green",                                // 245
+	"Amersham",                                  // 246
+	"Chalfont & Latimer",                        // 247
+	"Chesham",                                   // 248
+	"Croxley",                                   // 249
+	"Chorleywood",                               // 250
+	"Harrow-on-the-Hill",                        // 251
+	"Moor Park",                                 // 252
+	"North Harrow",                              // 253
+	"Northwick Park",                            // 254
+	"Northwood",                                 // 255
+	"Northwood Hills",                           // 256
+	"Pinner",                                    // 257
+	"Preston Road",                              // 258
+	"Rickmansworth",                             // 259
+	"Watford",                                   // 260
+	"West Harrow",                               // 261
+	"Blackhorse Road",                           // 262
+	"Brixton",                                   // 263
+	"Highbury & Islington",                      // 264
+	"Pimlico",                                   // 265
+	"Seven Sisters",                             // 266
+	"Tottenham Hale",                            // 267
+	"Vauxhall",                                  // 268
+	"Walthamstow Central",                       // 269
 };
 
 std::vector<line_t> const lines = {
 	{
 		"Central",
 		{
-			{ 38, 37, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 29, 31, 35, 1, 14, 5, 33, 7, },
-			{ 38, 37, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 36, 27, 9, 21, 0, 8, 12, },
-			{ 38, 28, 38, 23, 38, 25, 11, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 29, 31, 35, 1, 14, 5, 33, 7, },
-			{ 38, 28, 38, 23, 38, 25, 11, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 36, 27, 9, 21, 0, 8, 12, },
+			{ 9, 48, 26, 8, 44, 36, 18, 28, 32, 20, 24, 3, 30, 42, 15, 5, 38, 4, 21, 2, 25, 40, 22, 23, 37, 41, 45, 1, 19, 7, 43, 10, },
+			{ 9, 48, 26, 8, 44, 36, 18, 28, 32, 20, 24, 3, 30, 42, 15, 5, 38, 4, 21, 2, 25, 40, 22, 23, 47, 33, 14, 27, 0, 11, 17, },
+			{ 46, 34, 39, 29, 12, 31, 16, 26, 8, 44, 36, 18, 28, 32, 20, 24, 3, 30, 42, 15, 5, 38, 4, 21, 2, 25, 40, 22, 23, 37, 41, 45, 1, 19, 7, 43, 10, },
+			{ 46, 34, 39, 29, 12, 31, 16, 26, 8, 44, 36, 18, 28, 32, 20, 24, 3, 30, 42, 15, 5, 38, 4, 21, 2, 25, 40, 22, 23, 47, 33, 14, 27, 0, 11, 17, },
 		}
 	},
 	{
 		"District",
 		{
-			{ 79, 48, 38, 45, 72, 65, 64, 79, 42, 78, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
-			{ 79, 48, 38, 45, 72, 65, 64, 79, 42, 78, 49, 58, 22, 44, 79, 54, },
-			{ 79, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
-			{ 79, 49, 58, 22, 44, 79, 54, },
-			{ 79, 79, 79, 72, 65, 64, 79, 42, 78, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
-			{ 79, 79, 79, 72, 65, 64, 79, 42, 78, 49, 58, 22, 44, 79, 54, },
-			{ 79, 77, 66, 53, 63, 62, 55, 79, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
-			{ 79, 77, 66, 53, 63, 62, 55, 79, 49, 58, 22, 44, 79, 54, },
+			{ 9, 62, 49, 59, 92, 85, 84, 73, 55, 103, 63, 71, 89, 90, 98, 88, 105, 65, 91, 53, 78, 58, 77, 93, 50, 104, 87, 25, 56, 51, 100, 80, 95, 64, 54, 97, 52, 61, 60, 66, 72, 94, 96, },
+			{ 9, 62, 49, 59, 92, 85, 84, 73, 55, 103, 63, 74, 28, 57, 79, 68, },
+			{ 75, 63, 71, 89, 90, 98, 88, 105, 65, 91, 53, 78, 58, 77, 93, 50, 104, 87, 25, 56, 51, 100, 80, 95, 64, 54, 97, 52, 61, 60, 66, 72, 94, 96, },
+			{ 75, 63, 74, 28, 57, 79, 68, },
+			{ 83, 76, 70, 92, 85, 84, 73, 55, 103, 63, 71, 89, 90, 98, 88, 105, 65, 91, 53, 78, 58, 77, 93, 50, 104, 87, 25, 56, 51, 100, 80, 95, 64, 54, 97, 52, 61, 60, 66, 72, 94, 96, },
+			{ 83, 76, 70, 92, 85, 84, 73, 55, 103, 63, 74, 28, 57, 79, 68, },
+			{ 101, 102, 86, 67, 82, 81, 69, 99, 63, 71, 89, 90, 98, 88, 105, 65, 91, 53, 78, 58, 77, 93, 50, 104, 87, 25, 56, 51, 100, 80, 95, 64, 54, 97, 52, 61, 60, 66, 72, 94, 96, },
+			{ 101, 102, 86, 67, 82, 81, 69, 99, 63, 74, 28, 57, 79, 68, },
 		}
 	},
 	{
 		"Jubilee",
 		{
-			{ 90, 81, 88, 86, 94, 87, 82, 93, 85, 95, 83, 91, 89, 80, 3, 84, 95, 95, 92, 95, 79, 95, 95, 95, 95, 95, 95, },
+			{ 122, 109, 120, 116, 128, 118, 112, 126, 115, 125, 113, 123, 121, 107, 3, 114, 105, 127, 124, 117, 106, 110, 111, 119, 108, 100, 40, },
 		}
 	},
 	{
 		"Northern",
 		{
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 101, 100, 116, 112, 99, 114, 102, 98, 109, },
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 132, 128, 95, 115, 108, 110, 120, },
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 132, 128, 95, 115, 108, 110, 129, 130, 125, 113, },
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 101, 100, 116, 112, 99, 114, 102, 98, 109, },
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 132, 128, 95, 115, 108, 110, 120, },
-			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 132, 128, 95, 115, 108, 110, 129, 130, 125, 113, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 144, 132, 117, 4, 160, 163, 130, 157, 147, 143, 136, 135, 154, 150, 134, 152, 138, 133, 146, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 144, 132, 117, 4, 160, 163, 130, 157, 147, 143, 156, 170, 129, 153, 145, 148, 161, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 144, 132, 117, 4, 160, 163, 130, 157, 147, 143, 156, 170, 129, 153, 145, 148, 171, 172, 167, 151, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 127, 65, 137, 158, 42, 149, 173, 147, 162, 143, 136, 135, 154, 150, 134, 152, 138, 133, 146, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 127, 65, 137, 158, 42, 149, 173, 147, 162, 143, 156, 170, 129, 153, 145, 148, 161, },
+			{ 159, 166, 142, 169, 168, 131, 141, 139, 140, 165, 164, 155, 127, 65, 137, 158, 42, 149, 173, 147, 162, 143, 156, 170, 129, 153, 145, 148, 171, 172, 167, 151, },
 		}
 	},
 	{
 		"Waterloo & City",
 		{
-			{ 132, 132, },
+			{ 127, 4, },
 		}
 	},
 	{
 		"Circle",
 		{
-			{ 143, 135, 140, 141, 138, 137, 142, 139, 143, 54, 80, 136, 134, 143, 143, 133, 143, 143, 132, 73, 59, 143, 60, 143, 71, 51, 143, 68, 143, 70, 69, 56, 58, 22, 44, 143, 54, },
+			{ 180, 178, 185, 186, 182, 181, 187, 184, 183, 68, 107, 179, 176, 157, 177, 175, 160, 21, 174, 93, 77, 58, 78, 53, 91, 65, 105, 88, 98, 90, 89, 71, 74, 28, 57, 79, 68, },
 		}
 	},
 	{
 		"Bakerloo",
 		{
-			{ 150, 145, 150, 51, 150, 147, 24, 148, 80, 150, 143, 150, 149, 146, 144, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, },
+			{ 144, 194, 127, 65, 137, 198, 30, 200, 107, 196, 188, 79, 204, 195, 192, 199, 193, 203, 190, 201, 205, 197, 202, 191, 189, },
 		}
 	},
 	{
 		"Piccadilly",
 		{
-			{ 186, 186, 160, 164, 162, 163, 172, 154, 170, 178, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
-			{ 186, 186, 160, 164, 162, 163, 172, 154, 170, 178, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
-			{ 184, 159, 166, 175, 174, 158, 177, 180, 181, 182, 150, 173, 169, 48, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
+			{ 219, 221, 217, 224, 222, 223, 232, 210, 230, 238, 49, 92, 73, 55, 63, 71, 89, 227, 218, 114, 198, 158, 212, 15, 236, 157, 211, 225, 208, 215, 228, 243, 245, 209, 207, 239, 231, 213, },
+			{ 220, 221, 217, 224, 222, 223, 232, 210, 230, 238, 49, 92, 73, 55, 63, 71, 89, 227, 218, 114, 198, 158, 212, 15, 236, 157, 211, 225, 208, 215, 228, 243, 245, 209, 207, 239, 231, 213, },
+			{ 244, 216, 226, 235, 234, 214, 237, 240, 241, 242, 206, 233, 229, 62, 49, 92, 73, 55, 63, 71, 89, 227, 218, 114, 198, 158, 212, 15, 236, 157, 211, 225, 208, 215, 228, 243, 245, 209, 207, 239, 231, 213, },
 		}
 	},
 	{
 		"Metropolitan",
 		{
-			{ 197, 197, 197, 197, 188, 191, 192, 193, 189, 197, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
-			{ 186, 197, 197, 197, 187, 195, },
-			{ 186, 197, 197, 197, 188, 191, 192, 193, 189, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
-			{ 184, 159, 166, 175, 174, 158, 177, 196, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
-			{ 195, 187, 188, 191, 192, 193, 189, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
+			{ 246, 247, 250, 259, 252, 255, 256, 257, 253, 251, 128, 113, 107, 179, 176, 157, 177, 175, 160, 21, 174, },
+			{ 248, 247, 250, 259, 249, 260, },
+			{ 248, 247, 250, 259, 252, 255, 256, 257, 253, 251, 254, 258, 128, 113, 107, 179, 176, 157, 177, 175, 160, 21, 174, },
+			{ 244, 216, 226, 235, 234, 214, 237, 261, 251, 254, 258, 128, 113, 107, 179, 176, 157, 177, 175, 160, 21, 174, },
+			{ 260, 249, 252, 255, 256, 257, 253, 251, 254, 258, 128, 113, 107, 179, 176, 157, 177, 175, 160, 21, 174, },
 		}
 	},
 	{
 		"Victoria",
 		{
-			{ 198, 123, 198, 197, 198, 84, 24, 131, 198, 198, 198, 198, 198, 198, 198, 198, },
+			{ 263, 165, 268, 265, 98, 114, 30, 173, 147, 157, 264, 215, 266, 267, 262, 269, },
 		}
 	},
 	{
 		"Hammersmith & City",
 		{
-			{ 198, 135, 140, 141, 138, 137, 142, 139, 198, 54, 80, 136, 134, 198, 198, 133, 198, 198, 39, 198, 67, 19, 43, 40, 198, 61, 75, 50, 198, },
+			{ 180, 178, 185, 186, 182, 181, 187, 184, 183, 68, 107, 179, 176, 157, 177, 175, 160, 21, 50, 104, 87, 25, 56, 51, 100, 80, 95, 64, 54, },
 		}
 	},
 };

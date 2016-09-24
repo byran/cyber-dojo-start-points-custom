@@ -14,4 +14,14 @@ wget -O piccadilly.json https://api.tfl.gov.uk/Line/piccadilly/Route/Sequence/ou
 wget -O victoria.json https://api.tfl.gov.uk/Line/victoria/Route/Sequence/outbound?excludeCrowding=True&app_id=&app_key=
 wget -O waterloo-city.json https://api.tfl.gov.uk/Line/waterloo-city/Route/Sequence/outbound?excludeCrowding=True&app_id=&app_key=
 
-echo Downloads complete
+wget -O station-bakerloo.json https://api.tfl.gov.uk/Line/bakerloo/StopPoints?app_id=&app_key=
+wget -O station-central.json https://api.tfl.gov.uk/Line/central/StopPoints?app_id=&app_key=
+wget -O station-circle.json https://api.tfl.gov.uk/Line/circle/StopPoints?app_id=&app_key=
+wget -O station-district.json https://api.tfl.gov.uk/Line/district/StopPoints?app_id=&app_key=
+wget -O station-hammersmith-city.json https://api.tfl.gov.uk/Line/hammersmith-city/StopPoints?app_id=&app_key=
+wget -O station-jubilee.json https://api.tfl.gov.uk/Line/jubilee/StopPoints?app_id=&app_key=
+wget -O station-metropolitan.json https://api.tfl.gov.uk/Line/metropolitan/StopPoints?app_id=&app_key=
+wget -O station-northern.json https://api.tfl.gov.uk/Line/northern/StopPoints?app_id=&app_key=
+wget -O station-piccadilly.json https://api.tfl.gov.uk/Line/piccadilly/StopPoints?app_id=&app_key=
+wget -O station-victoria.json https://api.tfl.gov.uk/Line/victoria/StopPoints?app_id=&app_key=
+wget -O station-waterloo-city.json https://api.tfl.gov.uk/Line/waterloo-city/StopPoints?app_id=&app_key=
