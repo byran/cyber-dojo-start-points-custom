@@ -1,292 +1,292 @@
 #include "tube_lines.hpp"
 
-std::map<std::string, std::string> const stations = {
-	{ "940GZZLUBKE", "Barkingside"},
-	{ "940GZZLUBKH", "Buckhurst Hill"},
-	{ "940GZZLUBLG", "Bethnal Green"},
-	{ "940GZZLUBND", "Bond Street"},
-	{ "940GZZLUCHL", "Chancery Lane"},
-	{ "940GZZLUDBN", "Debden"},
-	{ "940GZZLUEAN", "East Acton"},
-	{ "940GZZLUEPG", "Epping"},
-	{ "940GZZLUFLP", "Fairlop"},
-	{ "940GZZLUGTH", "Gants Hill"},
-	{ "940GZZLUHBN", "Holborn"},
-	{ "940GZZLUHGR", "Hanger Lane"},
-	{ "940GZZLUHLT", "Hainault"},
-	{ "940GZZLUHPK", "Holland Park"},
-	{ "940GZZLULGN", "Loughton"},
-	{ "940GZZLULGT", "Lancaster Gate"},
-	{ "940GZZLULYN", "Leyton"},
-	{ "940GZZLULYS", "Leytonstone"},
-	{ "940GZZLUMBA", "Marble Arch"},
-	{ "940GZZLUMED", "Mile End"},
-	{ "940GZZLUNAN", "North Acton"},
-	{ "940GZZLUNBP", "Newbury Park"},
-	{ "940GZZLUNHG", "Notting Hill Gate"},
-	{ "940GZZLUNHT", "Northolt"},
-	{ "940GZZLUOXC", "Oxford Circus"},
-	{ "940GZZLUPVL", "Perivale"},
-	{ "940GZZLUQWY", "Queensway"},
-	{ "940GZZLURBG", "Redbridge"},
-	{ "940GZZLURSG", "Ruislip Gardens"},
-	{ "940GZZLUSNB", "Snaresbrook"},
-	{ "940GZZLUSPU", "St. Paul's"},
-	{ "940GZZLUSWF", "South Woodford"},
-	{ "940GZZLUTCR", "Tottenham Court Road"},
-	{ "940GZZLUTHB", "Theydon Bois"},
-	{ "940GZZLUWCY", "White City"},
-	{ "940GZZLUWOF", "Woodford"},
-	{ "940GZZLUWSD", "Wanstead"},
-	{ "940GZZLUWTA", "West Acton"},
-	{ "940GZZLUACT", "Acton Town"},
-	{ "940GZZLUADE", "Aldgate East"},
-	{ "940GZZLUBBB", "Bromley-by-Bow"},
-	{ "940GZZLUBEC", "Becontree"},
-	{ "940GZZLUBSC", "Barons Court"},
-	{ "940GZZLUBWR", "Bow Road"},
-	{ "940GZZLUBWT", "Bayswater"},
-	{ "940GZZLUCWP", "Chiswick Park"},
-	{ "940GZZLUDGE", "Dagenham East"},
-	{ "940GZZLUDGY", "Dagenham Heathway"},
-	{ "940GZZLUECM", "Ealing Common"},
-	{ "940GZZLUECT", "Earl's Court"},
-	{ "940GZZLUEHM", "East Ham"},
-	{ "940GZZLUEMB", "Embankment"},
-	{ "940GZZLUEPK", "Elm Park"},
-	{ "940GZZLUEPY", "East Putney"},
-	{ "940GZZLUERC", "Edgware Road (Circle Line)"},
-	{ "940GZZLUFBY", "Fulham Broadway"},
-	{ "940GZZLUGTR", "Gloucester Road"},
-	{ "940GZZLUHCH", "Hornchurch"},
-	{ "940GZZLUHSK", "High Street Kensington"},
-	{ "940GZZLUMMT", "Monument"},
-	{ "940GZZLUMSH", "Mansion House"},
-	{ "940GZZLUPLW", "Plaistow"},
-	{ "940GZZLUPSG", "Parsons Green"},
-	{ "940GZZLUPYB", "Putney Bridge"},
-	{ "940GZZLURVP", "Ravenscourt Park"},
-	{ "940GZZLUSFB", "Stamford Brook"},
-	{ "940GZZLUSFS", "Southfields"},
-	{ "940GZZLUSGN", "Stepney Green"},
-	{ "940GZZLUSJP", "St. James's Park"},
-	{ "940GZZLUSKS", "South Kensington"},
-	{ "940GZZLUSSQ", "Sloane Square"},
-	{ "940GZZLUTMP", "Temple"},
-	{ "940GZZLUTNG", "Turnham Green"},
-	{ "940GZZLUTWH", "Tower Hill"},
-	{ "940GZZLUUPB", "Upminster Bridge"},
-	{ "940GZZLUUPK", "Upton Park"},
-	{ "940GZZLUUPY", "Upney"},
-	{ "940GZZLUWIP", "Wimbledon Park"},
-	{ "940GZZLUWKN", "West Kensington"},
-	{ "940GZZLUBMY", "Bermondsey"},
-	{ "940GZZLUBST", "Baker Street"},
-	{ "940GZZLUCPK", "Canons Park"},
-	{ "940GZZLUDOH", "Dollis Hill"},
-	{ "940GZZLUFYR", "Finchley Road"},
-	{ "940GZZLUGPK", "Green Park"},
-	{ "940GZZLUKBN", "Kilburn"},
-	{ "940GZZLUKBY", "Kingsbury"},
-	{ "940GZZLUNDN", "Neasden"},
-	{ "940GZZLUQBY", "Queensbury"},
-	{ "940GZZLUSJW", "St. John's Wood"},
-	{ "940GZZLUSTM", "Stanmore"},
-	{ "940GZZLUSWC", "Swiss Cottage"},
-	{ "940GZZLUSWK", "Southwark"},
-	{ "940GZZLUWIG", "Willesden Green"},
-	{ "940GZZLUWYP", "Wembley Park"},
-	{ "940GZZLUACY", "Archway"},
-	{ "940GZZLUAGL", "Angel"},
-	{ "940GZZLUBOR", "Borough"},
-	{ "940GZZLUBTK", "Burnt Oak"},
-	{ "940GZZLUBTX", "Brent Cross"},
-	{ "940GZZLUBZP", "Belsize Park"},
-	{ "940GZZLUCFM", "Chalk Farm"},
-	{ "940GZZLUCND", "Colindale"},
-	{ "940GZZLUCPC", "Clapham Common"},
-	{ "940GZZLUCPN", "Clapham North"},
-	{ "940GZZLUCPS", "Clapham South"},
-	{ "940GZZLUCSD", "Colliers Wood"},
-	{ "940GZZLUCTN", "Camden Town"},
-	{ "940GZZLUEFY", "East Finchley"},
-	{ "940GZZLUEGW", "Edgware"},
-	{ "940GZZLUFYC", "Finchley Central"},
-	{ "940GZZLUGDG", "Goodge Street"},
-	{ "940GZZLUGGN", "Golders Green"},
-	{ "940GZZLUHBT", "High Barnet"},
-	{ "940GZZLUHCL", "Hendon Central"},
-	{ "940GZZLUHGT", "Highgate"},
-	{ "940GZZLUHTD", "Hampstead"},
-	{ "940GZZLUKNG", "Kennington"},
-	{ "940GZZLULSQ", "Leicester Square"},
-	{ "940GZZLUMDN", "Morden"},
-	{ "940GZZLUMHL", "Mill Hill East"},
-	{ "940GZZLUMTC", "Mornington Crescent"},
-	{ "940GZZLUOVL", "Oval"},
-	{ "940GZZLUSKW", "Stockwell"},
-	{ "940GZZLUSWN", "South Wimbledon"},
-	{ "940GZZLUTAW", "Totteridge & Whetstone"},
-	{ "940GZZLUTBC", "Tooting Bec"},
-	{ "940GZZLUTBY", "Tooting Broadway"},
-	{ "940GZZLUTFP", "Tufnell Park"},
-	{ "940GZZLUWFN", "West Finchley"},
-	{ "940GZZLUWOP", "Woodside Park"},
-	{ "940GZZLUWRR", "Warren Street"},
-	{ "940GZZLUALD", "Aldgate"},
-	{ "940GZZLUBBN", "Barbican"},
-	{ "940GZZLUESQ", "Euston Square"},
-	{ "940GZZLUGHK", "Goldhawk Road"},
-	{ "940GZZLUGPS", "Great Portland Street"},
-	{ "940GZZLULAD", "Ladbroke Grove"},
-	{ "940GZZLULRD", "Latimer Road"},
-	{ "940GZZLURYO", "Royal Oak"},
-	{ "940GZZLUSBM", "Shepherd's Bush Market"},
-	{ "940GZZLUWLA", "Wood Lane"},
-	{ "940GZZLUWSP", "Westbourne Park"},
-	{ "940GZZLUERB", "Edgware Road (Bakerloo)"},
-	{ "940GZZLUKPK", "Kilburn Park"},
-	{ "940GZZLULBN", "Lambeth North"},
-	{ "940GZZLUMVL", "Maida Vale"},
-	{ "940GZZLUPCC", "Piccadilly Circus"},
-	{ "940GZZLURGP", "Regent's Park"},
-	{ "940GZZLUWKA", "Warwick Avenue"},
-	{ "940GZZLUALP", "Alperton"},
-	{ "940GZZLUASG", "Arnos Grove"},
-	{ "940GZZLUASL", "Arsenal"},
-	{ "940GZZLUBDS", "Bounds Green"},
-	{ "940GZZLUBOS", "Boston Manor"},
-	{ "940GZZLUCAR", "Caledonian Road"},
-	{ "940GZZLUCGN", "Covent Garden"},
-	{ "940GZZLUCKS", "Cockfosters"},
-	{ "940GZZLUEAE", "Eastcote"},
-	{ "940GZZLUHGD", "Hillingdon"},
-	{ "940GZZLUHNX", "Hatton Cross"},
-	{ "940GZZLUHPC", "Hyde Park Corner"},
-	{ "940GZZLUHWC", "Hounslow Central"},
-	{ "940GZZLUHWE", "Hounslow East"},
-	{ "940GZZLUHWT", "Hounslow West"},
-	{ "940GZZLUHWY", "Holloway Road"},
-	{ "940GZZLUICK", "Ickenham"},
-	{ "940GZZLUKNB", "Knightsbridge"},
-	{ "940GZZLUMRH", "Manor House"},
-	{ "940GZZLUNEN", "North Ealing"},
-	{ "940GZZLUNFD", "Northfields"},
-	{ "940GZZLUOAK", "Oakwood"},
-	{ "940GZZLUOSY", "Osterley"},
-	{ "940GZZLUPKR", "Park Royal"},
-	{ "940GZZLURSM", "Ruislip Manor"},
-	{ "940GZZLURSP", "Ruislip"},
-	{ "940GZZLURSQ", "Russell Square"},
-	{ "940GZZLURYL", "Rayners Lane"},
-	{ "940GZZLUSEA", "South Ealing"},
-	{ "940GZZLUSGT", "Southgate"},
-	{ "940GZZLUSHH", "South Harrow"},
-	{ "940GZZLUSUH", "Sudbury Hill"},
-	{ "940GZZLUSUT", "Sudbury Town"},
-	{ "940GZZLUTPN", "Turnpike Lane"},
-	{ "940GZZLUUXB", "Uxbridge"},
-	{ "940GZZLUWOG", "Wood Green"},
-	{ "940GZZLUCSM", "Chesham"},
-	{ "940GZZLUCXY", "Croxley"},
-	{ "940GZZLUMPK", "Moor Park"},
-	{ "940GZZLUNHA", "North Harrow"},
-	{ "940GZZLUNKP", "Northwick Park"},
-	{ "940GZZLUNOW", "Northwood"},
-	{ "940GZZLUNWH", "Northwood Hills"},
-	{ "940GZZLUPNR", "Pinner"},
-	{ "940GZZLUPRD", "Preston Road"},
-	{ "940GZZLUWAF", "Watford"},
-	{ "940GZZLUWHW", "West Harrow"},
-	{ "940GZZLUPCO", "Pimlico"},
+std::vector<std::string> const stations = {
+	"Barkingside",                // 0
+	"Buckhurst Hill",             // 1
+	"Bethnal Green",              // 2
+	"Bond Street",                // 3
+	"Chancery Lane",              // 4
+	"Debden",                     // 5
+	"East Acton",                 // 6
+	"Epping",                     // 7
+	"Fairlop",                    // 8
+	"Gants Hill",                 // 9
+	"Holborn",                    // 10
+	"Hanger Lane",                // 11
+	"Hainault",                   // 12
+	"Holland Park",               // 13
+	"Loughton",                   // 14
+	"Lancaster Gate",             // 15
+	"Leyton",                     // 16
+	"Leytonstone",                // 17
+	"Marble Arch",                // 18
+	"Mile End",                   // 19
+	"North Acton",                // 20
+	"Newbury Park",               // 21
+	"Notting Hill Gate",          // 22
+	"Northolt",                   // 23
+	"Oxford Circus",              // 24
+	"Perivale",                   // 25
+	"Queensway",                  // 26
+	"Redbridge",                  // 27
+	"Ruislip Gardens",            // 28
+	"Snaresbrook",                // 29
+	"St. Paul's",                 // 30
+	"South Woodford",             // 31
+	"Tottenham Court Road",       // 32
+	"Theydon Bois",               // 33
+	"White City",                 // 34
+	"Woodford",                   // 35
+	"Wanstead",                   // 36
+	"West Acton",                 // 37
+	"Acton Town",                 // 38
+	"Aldgate East",               // 39
+	"Bromley-by-Bow",             // 40
+	"Becontree",                  // 41
+	"Barons Court",               // 42
+	"Bow Road",                   // 43
+	"Bayswater",                  // 44
+	"Chiswick Park",              // 45
+	"Dagenham East",              // 46
+	"Dagenham Heathway",          // 47
+	"Ealing Common",              // 48
+	"Earl's Court",               // 49
+	"East Ham",                   // 50
+	"Embankment",                 // 51
+	"Elm Park",                   // 52
+	"East Putney",                // 53
+	"Edgware Road (Circle Line)", // 54
+	"Fulham Broadway",            // 55
+	"Gloucester Road",            // 56
+	"Hornchurch",                 // 57
+	"High Street Kensington",     // 58
+	"Monument",                   // 59
+	"Mansion House",              // 60
+	"Plaistow",                   // 61
+	"Parsons Green",              // 62
+	"Putney Bridge",              // 63
+	"Ravenscourt Park",           // 64
+	"Stamford Brook",             // 65
+	"Southfields",                // 66
+	"Stepney Green",              // 67
+	"St. James's Park",           // 68
+	"South Kensington",           // 69
+	"Sloane Square",              // 70
+	"Temple",                     // 71
+	"Turnham Green",              // 72
+	"Tower Hill",                 // 73
+	"Upminster Bridge",           // 74
+	"Upton Park",                 // 75
+	"Upney",                      // 76
+	"Wimbledon Park",             // 77
+	"West Kensington",            // 78
+	"Bermondsey",                 // 79
+	"Baker Street",               // 80
+	"Canons Park",                // 81
+	"Dollis Hill",                // 82
+	"Finchley Road",              // 83
+	"Green Park",                 // 84
+	"Kilburn",                    // 85
+	"Kingsbury",                  // 86
+	"Neasden",                    // 87
+	"Queensbury",                 // 88
+	"St. John's Wood",            // 89
+	"Stanmore",                   // 90
+	"Swiss Cottage",              // 91
+	"Southwark",                  // 92
+	"Willesden Green",            // 93
+	"Wembley Park",               // 94
+	"Archway",                    // 95
+	"Angel",                      // 96
+	"Borough",                    // 97
+	"Burnt Oak",                  // 98
+	"Brent Cross",                // 99
+	"Belsize Park",               // 100
+	"Chalk Farm",                 // 101
+	"Colindale",                  // 102
+	"Clapham Common",             // 103
+	"Clapham North",              // 104
+	"Clapham South",              // 105
+	"Colliers Wood",              // 106
+	"Camden Town",                // 107
+	"East Finchley",              // 108
+	"Edgware",                    // 109
+	"Finchley Central",           // 110
+	"Goodge Street",              // 111
+	"Golders Green",              // 112
+	"High Barnet",                // 113
+	"Hendon Central",             // 114
+	"Highgate",                   // 115
+	"Hampstead",                  // 116
+	"Kennington",                 // 117
+	"Leicester Square",           // 118
+	"Morden",                     // 119
+	"Mill Hill East",             // 120
+	"Mornington Crescent",        // 121
+	"Oval",                       // 122
+	"Stockwell",                  // 123
+	"South Wimbledon",            // 124
+	"Totteridge & Whetstone",     // 125
+	"Tooting Bec",                // 126
+	"Tooting Broadway",           // 127
+	"Tufnell Park",               // 128
+	"West Finchley",              // 129
+	"Woodside Park",              // 130
+	"Warren Street",              // 131
+	"Aldgate",                    // 132
+	"Barbican",                   // 133
+	"Euston Square",              // 134
+	"Goldhawk Road",              // 135
+	"Great Portland Street",      // 136
+	"Ladbroke Grove",             // 137
+	"Latimer Road",               // 138
+	"Royal Oak",                  // 139
+	"Shepherd's Bush Market",     // 140
+	"Wood Lane",                  // 141
+	"Westbourne Park",            // 142
+	"Edgware Road (Bakerloo)",    // 143
+	"Kilburn Park",               // 144
+	"Lambeth North",              // 145
+	"Maida Vale",                 // 146
+	"Piccadilly Circus",          // 147
+	"Regent's Park",              // 148
+	"Warwick Avenue",             // 149
+	"Alperton",                   // 150
+	"Arnos Grove",                // 151
+	"Arsenal",                    // 152
+	"Bounds Green",               // 153
+	"Boston Manor",               // 154
+	"Caledonian Road",            // 155
+	"Covent Garden",              // 156
+	"Cockfosters",                // 157
+	"Eastcote",                   // 158
+	"Hillingdon",                 // 159
+	"Hatton Cross",               // 160
+	"Hyde Park Corner",           // 161
+	"Hounslow Central",           // 162
+	"Hounslow East",              // 163
+	"Hounslow West",              // 164
+	"Holloway Road",              // 165
+	"Ickenham",                   // 166
+	"Knightsbridge",              // 167
+	"Manor House",                // 168
+	"North Ealing",               // 169
+	"Northfields",                // 170
+	"Oakwood",                    // 171
+	"Osterley",                   // 172
+	"Park Royal",                 // 173
+	"Ruislip Manor",              // 174
+	"Ruislip",                    // 175
+	"Russell Square",             // 176
+	"Rayners Lane",               // 177
+	"South Ealing",               // 178
+	"Southgate",                  // 179
+	"South Harrow",               // 180
+	"Sudbury Hill",               // 181
+	"Sudbury Town",               // 182
+	"Turnpike Lane",              // 183
+	"Uxbridge",                   // 184
+	"Wood Green",                 // 185
+	"Chesham",                    // 186
+	"Croxley",                    // 187
+	"Moor Park",                  // 188
+	"North Harrow",               // 189
+	"Northwick Park",             // 190
+	"Northwood",                  // 191
+	"Northwood Hills",            // 192
+	"Pinner",                     // 193
+	"Preston Road",               // 194
+	"Watford",                    // 195
+	"West Harrow",                // 196
+	"Pimlico",                    // 197
 };
 
 std::vector<line_t> const lines = {
 	{
 		"Central",
 		{
-			{ "940GZZLUEBY",  "940GZZLUWTA",  "940GZZLUNAN",  "940GZZLUEAN",  "940GZZLUWCY",  "940GZZLUSBC",  "940GZZLUHPK",  "940GZZLUNHG",  "940GZZLUQWY",  "940GZZLULGT",  "940GZZLUMBA",  "940GZZLUBND",  "940GZZLUOXC",  "940GZZLUTCR",  "940GZZLUHBN",  "940GZZLUCHL",  "940GZZLUSPU",  "940GZZLUBNK",  "940GZZLULVT",  "940GZZLUBLG",  "940GZZLUMED",  "940GZZLUSTD",  "940GZZLULYN",  "940GZZLULYS",  "940GZZLUSNB",  "940GZZLUSWF",  "940GZZLUWOF",  "940GZZLUBKH",  "940GZZLULGN",  "940GZZLUDBN",  "940GZZLUTHB",  "940GZZLUEPG", },
-			{ "940GZZLUEBY",  "940GZZLUWTA",  "940GZZLUNAN",  "940GZZLUEAN",  "940GZZLUWCY",  "940GZZLUSBC",  "940GZZLUHPK",  "940GZZLUNHG",  "940GZZLUQWY",  "940GZZLULGT",  "940GZZLUMBA",  "940GZZLUBND",  "940GZZLUOXC",  "940GZZLUTCR",  "940GZZLUHBN",  "940GZZLUCHL",  "940GZZLUSPU",  "940GZZLUBNK",  "940GZZLULVT",  "940GZZLUBLG",  "940GZZLUMED",  "940GZZLUSTD",  "940GZZLULYN",  "940GZZLULYS",  "940GZZLUWSD",  "940GZZLURBG",  "940GZZLUGTH",  "940GZZLUNBP",  "940GZZLUBKE",  "940GZZLUFLP",  "940GZZLUHLT", },
-			{ "940GZZLUWRP",  "940GZZLURSG",  "940GZZLUSRP",  "940GZZLUNHT",  "940GZZLUGFD",  "940GZZLUPVL",  "940GZZLUHGR",  "940GZZLUNAN",  "940GZZLUEAN",  "940GZZLUWCY",  "940GZZLUSBC",  "940GZZLUHPK",  "940GZZLUNHG",  "940GZZLUQWY",  "940GZZLULGT",  "940GZZLUMBA",  "940GZZLUBND",  "940GZZLUOXC",  "940GZZLUTCR",  "940GZZLUHBN",  "940GZZLUCHL",  "940GZZLUSPU",  "940GZZLUBNK",  "940GZZLULVT",  "940GZZLUBLG",  "940GZZLUMED",  "940GZZLUSTD",  "940GZZLULYN",  "940GZZLULYS",  "940GZZLUSNB",  "940GZZLUSWF",  "940GZZLUWOF",  "940GZZLUBKH",  "940GZZLULGN",  "940GZZLUDBN",  "940GZZLUTHB",  "940GZZLUEPG", },
-			{ "940GZZLUWRP",  "940GZZLURSG",  "940GZZLUSRP",  "940GZZLUNHT",  "940GZZLUGFD",  "940GZZLUPVL",  "940GZZLUHGR",  "940GZZLUNAN",  "940GZZLUEAN",  "940GZZLUWCY",  "940GZZLUSBC",  "940GZZLUHPK",  "940GZZLUNHG",  "940GZZLUQWY",  "940GZZLULGT",  "940GZZLUMBA",  "940GZZLUBND",  "940GZZLUOXC",  "940GZZLUTCR",  "940GZZLUHBN",  "940GZZLUCHL",  "940GZZLUSPU",  "940GZZLUBNK",  "940GZZLULVT",  "940GZZLUBLG",  "940GZZLUMED",  "940GZZLUSTD",  "940GZZLULYN",  "940GZZLULYS",  "940GZZLUWSD",  "940GZZLURBG",  "940GZZLUGTH",  "940GZZLUNBP",  "940GZZLUBKE",  "940GZZLUFLP",  "940GZZLUHLT", },
+			{ 38, 37, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 29, 31, 35, 1, 14, 5, 33, 7, },
+			{ 38, 37, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 36, 27, 9, 21, 0, 8, 12, },
+			{ 38, 28, 38, 23, 38, 25, 11, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 29, 31, 35, 1, 14, 5, 33, 7, },
+			{ 38, 28, 38, 23, 38, 25, 11, 20, 6, 34, 38, 13, 22, 26, 15, 18, 3, 24, 32, 10, 4, 30, 38, 38, 2, 19, 38, 16, 17, 36, 27, 9, 21, 0, 8, 12, },
 		}
 	},
 	{
 		"District",
 		{
-			{ "940GZZLUEBY",  "940GZZLUECM",  "940GZZLUACT",  "940GZZLUCWP",  "940GZZLUTNG",  "940GZZLUSFB",  "940GZZLURVP",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUWKN",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUSSQ",  "940GZZLUVIC",  "940GZZLUSJP",  "940GZZLUWSM",  "940GZZLUEMB",  "940GZZLUTMP",  "940GZZLUBKF",  "940GZZLUMSH",  "940GZZLUCST",  "940GZZLUMMT",  "940GZZLUTWH",  "940GZZLUADE",  "940GZZLUWPL",  "940GZZLUSGN",  "940GZZLUMED",  "940GZZLUBWR",  "940GZZLUBBB",  "940GZZLUWHM",  "940GZZLUPLW",  "940GZZLUUPK",  "940GZZLUEHM",  "940GZZLUBKG",  "940GZZLUUPY",  "940GZZLUBEC",  "940GZZLUDGY",  "940GZZLUDGE",  "940GZZLUEPK",  "940GZZLUHCH",  "940GZZLUUPB",  "940GZZLUUPM", },
-			{ "940GZZLUEBY",  "940GZZLUECM",  "940GZZLUACT",  "940GZZLUCWP",  "940GZZLUTNG",  "940GZZLUSFB",  "940GZZLURVP",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUWKN",  "940GZZLUECT",  "940GZZLUHSK",  "940GZZLUNHG",  "940GZZLUBWT",  "940GZZLUPAC",  "940GZZLUERC", },
-			{ "940GZZLUKOY",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUSSQ",  "940GZZLUVIC",  "940GZZLUSJP",  "940GZZLUWSM",  "940GZZLUEMB",  "940GZZLUTMP",  "940GZZLUBKF",  "940GZZLUMSH",  "940GZZLUCST",  "940GZZLUMMT",  "940GZZLUTWH",  "940GZZLUADE",  "940GZZLUWPL",  "940GZZLUSGN",  "940GZZLUMED",  "940GZZLUBWR",  "940GZZLUBBB",  "940GZZLUWHM",  "940GZZLUPLW",  "940GZZLUUPK",  "940GZZLUEHM",  "940GZZLUBKG",  "940GZZLUUPY",  "940GZZLUBEC",  "940GZZLUDGY",  "940GZZLUDGE",  "940GZZLUEPK",  "940GZZLUHCH",  "940GZZLUUPB",  "940GZZLUUPM", },
-			{ "940GZZLUKOY",  "940GZZLUECT",  "940GZZLUHSK",  "940GZZLUNHG",  "940GZZLUBWT",  "940GZZLUPAC",  "940GZZLUERC", },
-			{ "940GZZLURMD",  "940GZZLUKWG",  "940GZZLUGBY",  "940GZZLUTNG",  "940GZZLUSFB",  "940GZZLURVP",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUWKN",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUSSQ",  "940GZZLUVIC",  "940GZZLUSJP",  "940GZZLUWSM",  "940GZZLUEMB",  "940GZZLUTMP",  "940GZZLUBKF",  "940GZZLUMSH",  "940GZZLUCST",  "940GZZLUMMT",  "940GZZLUTWH",  "940GZZLUADE",  "940GZZLUWPL",  "940GZZLUSGN",  "940GZZLUMED",  "940GZZLUBWR",  "940GZZLUBBB",  "940GZZLUWHM",  "940GZZLUPLW",  "940GZZLUUPK",  "940GZZLUEHM",  "940GZZLUBKG",  "940GZZLUUPY",  "940GZZLUBEC",  "940GZZLUDGY",  "940GZZLUDGE",  "940GZZLUEPK",  "940GZZLUHCH",  "940GZZLUUPB",  "940GZZLUUPM", },
-			{ "940GZZLURMD",  "940GZZLUKWG",  "940GZZLUGBY",  "940GZZLUTNG",  "940GZZLUSFB",  "940GZZLURVP",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUWKN",  "940GZZLUECT",  "940GZZLUHSK",  "940GZZLUNHG",  "940GZZLUBWT",  "940GZZLUPAC",  "940GZZLUERC", },
-			{ "940GZZLUWIM",  "940GZZLUWIP",  "940GZZLUSFS",  "940GZZLUEPY",  "940GZZLUPYB",  "940GZZLUPSG",  "940GZZLUFBY",  "940GZZLUWBN",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUSSQ",  "940GZZLUVIC",  "940GZZLUSJP",  "940GZZLUWSM",  "940GZZLUEMB",  "940GZZLUTMP",  "940GZZLUBKF",  "940GZZLUMSH",  "940GZZLUCST",  "940GZZLUMMT",  "940GZZLUTWH",  "940GZZLUADE",  "940GZZLUWPL",  "940GZZLUSGN",  "940GZZLUMED",  "940GZZLUBWR",  "940GZZLUBBB",  "940GZZLUWHM",  "940GZZLUPLW",  "940GZZLUUPK",  "940GZZLUEHM",  "940GZZLUBKG",  "940GZZLUUPY",  "940GZZLUBEC",  "940GZZLUDGY",  "940GZZLUDGE",  "940GZZLUEPK",  "940GZZLUHCH",  "940GZZLUUPB",  "940GZZLUUPM", },
-			{ "940GZZLUWIM",  "940GZZLUWIP",  "940GZZLUSFS",  "940GZZLUEPY",  "940GZZLUPYB",  "940GZZLUPSG",  "940GZZLUFBY",  "940GZZLUWBN",  "940GZZLUECT",  "940GZZLUHSK",  "940GZZLUNHG",  "940GZZLUBWT",  "940GZZLUPAC",  "940GZZLUERC", },
+			{ 79, 48, 38, 45, 72, 65, 64, 79, 42, 78, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
+			{ 79, 48, 38, 45, 72, 65, 64, 79, 42, 78, 49, 58, 22, 44, 79, 54, },
+			{ 79, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
+			{ 79, 49, 58, 22, 44, 79, 54, },
+			{ 79, 79, 79, 72, 65, 64, 79, 42, 78, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
+			{ 79, 79, 79, 72, 65, 64, 79, 42, 78, 49, 58, 22, 44, 79, 54, },
+			{ 79, 77, 66, 53, 63, 62, 55, 79, 49, 56, 69, 70, 79, 68, 79, 51, 71, 79, 60, 79, 59, 73, 39, 79, 67, 19, 43, 40, 79, 61, 75, 50, 79, 76, 41, 47, 46, 52, 57, 74, 79, },
+			{ 79, 77, 66, 53, 63, 62, 55, 79, 49, 58, 22, 44, 79, 54, },
 		}
 	},
 	{
 		"Jubilee",
 		{
-			{ "940GZZLUSTM",  "940GZZLUCPK",  "940GZZLUQBY",  "940GZZLUKBY",  "940GZZLUWYP",  "940GZZLUNDN",  "940GZZLUDOH",  "940GZZLUWIG",  "940GZZLUKBN",  "940GZZLUWHP",  "940GZZLUFYR",  "940GZZLUSWC",  "940GZZLUSJW",  "940GZZLUBST",  "940GZZLUBND",  "940GZZLUGPK",  "940GZZLUWSM",  "940GZZLUWLO",  "940GZZLUSWK",  "940GZZLULNB",  "940GZZLUBMY",  "940GZZLUCWR",  "940GZZLUCYF",  "940GZZLUNGW",  "940GZZLUCGT",  "940GZZLUWHM",  "940GZZLUSTD", },
+			{ 90, 81, 88, 86, 94, 87, 82, 93, 85, 95, 83, 91, 89, 80, 3, 84, 95, 95, 92, 95, 79, 95, 95, 95, 95, 95, 95, },
 		}
 	},
 	{
 		"Northern",
 		{
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUEAC",  "940GZZLUBOR",  "940GZZLULNB",  "940GZZLUBNK",  "940GZZLUMGT",  "940GZZLUODS",  "940GZZLUAGL",  "940GZZLUKSX",  "940GZZLUEUS",  "940GZZLUCTN",  "940GZZLUCFM",  "940GZZLUBZP",  "940GZZLUHTD",  "940GZZLUGGN",  "940GZZLUBTX",  "940GZZLUHCL",  "940GZZLUCND",  "940GZZLUBTK",  "940GZZLUEGW", },
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUEAC",  "940GZZLUBOR",  "940GZZLULNB",  "940GZZLUBNK",  "940GZZLUMGT",  "940GZZLUODS",  "940GZZLUAGL",  "940GZZLUKSX",  "940GZZLUEUS",  "940GZZLUCTN",  "940GZZLUKSH",  "940GZZLUTFP",  "940GZZLUACY",  "940GZZLUHGT",  "940GZZLUEFY",  "940GZZLUFYC",  "940GZZLUMHL", },
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUEAC",  "940GZZLUBOR",  "940GZZLULNB",  "940GZZLUBNK",  "940GZZLUMGT",  "940GZZLUODS",  "940GZZLUAGL",  "940GZZLUKSX",  "940GZZLUEUS",  "940GZZLUCTN",  "940GZZLUKSH",  "940GZZLUTFP",  "940GZZLUACY",  "940GZZLUHGT",  "940GZZLUEFY",  "940GZZLUFYC",  "940GZZLUWFN",  "940GZZLUWOP",  "940GZZLUTAW",  "940GZZLUHBT", },
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUWLO",  "940GZZLUEMB",  "940GZZLUCHX",  "940GZZLULSQ",  "940GZZLUTCR",  "940GZZLUGDG",  "940GZZLUWRR",  "940GZZLUEUS",  "940GZZLUMTC",  "940GZZLUCTN",  "940GZZLUCFM",  "940GZZLUBZP",  "940GZZLUHTD",  "940GZZLUGGN",  "940GZZLUBTX",  "940GZZLUHCL",  "940GZZLUCND",  "940GZZLUBTK",  "940GZZLUEGW", },
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUWLO",  "940GZZLUEMB",  "940GZZLUCHX",  "940GZZLULSQ",  "940GZZLUTCR",  "940GZZLUGDG",  "940GZZLUWRR",  "940GZZLUEUS",  "940GZZLUMTC",  "940GZZLUCTN",  "940GZZLUKSH",  "940GZZLUTFP",  "940GZZLUACY",  "940GZZLUHGT",  "940GZZLUEFY",  "940GZZLUFYC",  "940GZZLUMHL", },
-			{ "940GZZLUMDN",  "940GZZLUSWN",  "940GZZLUCSD",  "940GZZLUTBY",  "940GZZLUTBC",  "940GZZLUBLM",  "940GZZLUCPS",  "940GZZLUCPC",  "940GZZLUCPN",  "940GZZLUSKW",  "940GZZLUOVL",  "940GZZLUKNG",  "940GZZLUWLO",  "940GZZLUEMB",  "940GZZLUCHX",  "940GZZLULSQ",  "940GZZLUTCR",  "940GZZLUGDG",  "940GZZLUWRR",  "940GZZLUEUS",  "940GZZLUMTC",  "940GZZLUCTN",  "940GZZLUKSH",  "940GZZLUTFP",  "940GZZLUACY",  "940GZZLUHGT",  "940GZZLUEFY",  "940GZZLUFYC",  "940GZZLUWFN",  "940GZZLUWOP",  "940GZZLUTAW",  "940GZZLUHBT", },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 101, 100, 116, 112, 99, 114, 102, 98, 109, },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 132, 128, 95, 115, 108, 110, 120, },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 97, 132, 132, 132, 132, 96, 132, 132, 107, 132, 128, 95, 115, 108, 110, 129, 130, 125, 113, },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 101, 100, 116, 112, 99, 114, 102, 98, 109, },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 132, 128, 95, 115, 108, 110, 120, },
+			{ 119, 124, 106, 127, 126, 132, 105, 103, 104, 123, 122, 117, 132, 51, 132, 118, 32, 111, 131, 132, 121, 107, 132, 128, 95, 115, 108, 110, 129, 130, 125, 113, },
 		}
 	},
 	{
 		"Waterloo & City",
 		{
-			{ "940GZZLUWLO",  "940GZZLUBNK", },
+			{ 132, 132, },
 		}
 	},
 	{
 		"Circle",
 		{
-			{ "940GZZLUHSC",  "940GZZLUGHK",  "940GZZLUSBM",  "940GZZLUWLA",  "940GZZLULRD",  "940GZZLULAD",  "940GZZLUWSP",  "940GZZLURYO",  "940GZZLUPAH",  "940GZZLUERC",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUALD",  "940GZZLUTWH",  "940GZZLUMMT",  "940GZZLUCST",  "940GZZLUMSH",  "940GZZLUBKF",  "940GZZLUTMP",  "940GZZLUEMB",  "940GZZLUWSM",  "940GZZLUSJP",  "940GZZLUVIC",  "940GZZLUSSQ",  "940GZZLUSKS",  "940GZZLUGTR",  "940GZZLUHSK",  "940GZZLUNHG",  "940GZZLUBWT",  "940GZZLUPAC",  "940GZZLUERC", },
+			{ 143, 135, 140, 141, 138, 137, 142, 139, 143, 54, 80, 136, 134, 143, 143, 133, 143, 143, 132, 73, 59, 143, 60, 143, 71, 51, 143, 68, 143, 70, 69, 56, 58, 22, 44, 143, 54, },
 		}
 	},
 	{
 		"Bakerloo",
 		{
-			{ "940GZZLUEAC",  "940GZZLULBN",  "940GZZLUWLO",  "940GZZLUEMB",  "940GZZLUCHX",  "940GZZLUPCC",  "940GZZLUOXC",  "940GZZLURGP",  "940GZZLUBST",  "940GZZLUMYB",  "940GZZLUERB",  "940GZZLUPAC",  "940GZZLUWKA",  "940GZZLUMVL",  "940GZZLUKPK",  "940GZZLUQPS",  "940GZZLUKSL",  "940GZZLUWJN",  "940GZZLUHSN",  "940GZZLUSGP",  "940GZZLUWYC",  "940GZZLUNWY",  "940GZZLUSKT",  "940GZZLUKEN",  "940GZZLUHAW", },
+			{ 150, 145, 150, 51, 150, 147, 24, 148, 80, 150, 143, 150, 149, 146, 144, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, },
 		}
 	},
 	{
 		"Piccadilly",
 		{
-			{ "940GZZLUHR4",  "940GZZLUHRC",  "940GZZLUHNX",  "940GZZLUHWT",  "940GZZLUHWC",  "940GZZLUHWE",  "940GZZLUOSY",  "940GZZLUBOS",  "940GZZLUNFD",  "940GZZLUSEA",  "940GZZLUACT",  "940GZZLUTNG",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUKNB",  "940GZZLUHPC",  "940GZZLUGPK",  "940GZZLUPCC",  "940GZZLULSQ",  "940GZZLUCGN",  "940GZZLUHBN",  "940GZZLURSQ",  "940GZZLUKSX",  "940GZZLUCAR",  "940GZZLUHWY",  "940GZZLUASL",  "940GZZLUFPK",  "940GZZLUMRH",  "940GZZLUTPN",  "940GZZLUWOG",  "940GZZLUBDS",  "940GZZLUASG",  "940GZZLUSGT",  "940GZZLUOAK",  "940GZZLUCKS", },
-			{ "940GZZLUHR5",  "940GZZLUHRC",  "940GZZLUHNX",  "940GZZLUHWT",  "940GZZLUHWC",  "940GZZLUHWE",  "940GZZLUOSY",  "940GZZLUBOS",  "940GZZLUNFD",  "940GZZLUSEA",  "940GZZLUACT",  "940GZZLUTNG",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUKNB",  "940GZZLUHPC",  "940GZZLUGPK",  "940GZZLUPCC",  "940GZZLULSQ",  "940GZZLUCGN",  "940GZZLUHBN",  "940GZZLURSQ",  "940GZZLUKSX",  "940GZZLUCAR",  "940GZZLUHWY",  "940GZZLUASL",  "940GZZLUFPK",  "940GZZLUMRH",  "940GZZLUTPN",  "940GZZLUWOG",  "940GZZLUBDS",  "940GZZLUASG",  "940GZZLUSGT",  "940GZZLUOAK",  "940GZZLUCKS", },
-			{ "940GZZLUUXB",  "940GZZLUHGD",  "940GZZLUICK",  "940GZZLURSP",  "940GZZLURSM",  "940GZZLUEAE",  "940GZZLURYL",  "940GZZLUSHH",  "940GZZLUSUH",  "940GZZLUSUT",  "940GZZLUALP",  "940GZZLUPKR",  "940GZZLUNEN",  "940GZZLUECM",  "940GZZLUACT",  "940GZZLUTNG",  "940GZZLUHSD",  "940GZZLUBSC",  "940GZZLUECT",  "940GZZLUGTR",  "940GZZLUSKS",  "940GZZLUKNB",  "940GZZLUHPC",  "940GZZLUGPK",  "940GZZLUPCC",  "940GZZLULSQ",  "940GZZLUCGN",  "940GZZLUHBN",  "940GZZLURSQ",  "940GZZLUKSX",  "940GZZLUCAR",  "940GZZLUHWY",  "940GZZLUASL",  "940GZZLUFPK",  "940GZZLUMRH",  "940GZZLUTPN",  "940GZZLUWOG",  "940GZZLUBDS",  "940GZZLUASG",  "940GZZLUSGT",  "940GZZLUOAK",  "940GZZLUCKS", },
+			{ 186, 186, 160, 164, 162, 163, 172, 154, 170, 178, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
+			{ 186, 186, 160, 164, 162, 163, 172, 154, 170, 178, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
+			{ 184, 159, 166, 175, 174, 158, 177, 180, 181, 182, 150, 173, 169, 48, 38, 72, 186, 42, 49, 56, 69, 167, 161, 84, 147, 118, 156, 10, 176, 186, 155, 165, 152, 186, 168, 183, 185, 153, 151, 179, 171, 157, },
 		}
 	},
 	{
 		"Metropolitan",
 		{
-			{ "940GZZLUAMS",  "940GZZLUCAL",  "940GZZLUCYD",  "940GZZLURKW",  "940GZZLUMPK",  "940GZZLUNOW",  "940GZZLUNWH",  "940GZZLUPNR",  "940GZZLUNHA",  "940GZZLUHOH",  "940GZZLUWYP",  "940GZZLUFYR",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUALD", },
-			{ "940GZZLUCSM",  "940GZZLUCAL",  "940GZZLUCYD",  "940GZZLURKW",  "940GZZLUCXY",  "940GZZLUWAF", },
-			{ "940GZZLUCSM",  "940GZZLUCAL",  "940GZZLUCYD",  "940GZZLURKW",  "940GZZLUMPK",  "940GZZLUNOW",  "940GZZLUNWH",  "940GZZLUPNR",  "940GZZLUNHA",  "940GZZLUHOH",  "940GZZLUNKP",  "940GZZLUPRD",  "940GZZLUWYP",  "940GZZLUFYR",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUALD", },
-			{ "940GZZLUUXB",  "940GZZLUHGD",  "940GZZLUICK",  "940GZZLURSP",  "940GZZLURSM",  "940GZZLUEAE",  "940GZZLURYL",  "940GZZLUWHW",  "940GZZLUHOH",  "940GZZLUNKP",  "940GZZLUPRD",  "940GZZLUWYP",  "940GZZLUFYR",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUALD", },
-			{ "940GZZLUWAF",  "940GZZLUCXY",  "940GZZLUMPK",  "940GZZLUNOW",  "940GZZLUNWH",  "940GZZLUPNR",  "940GZZLUNHA",  "940GZZLUHOH",  "940GZZLUNKP",  "940GZZLUPRD",  "940GZZLUWYP",  "940GZZLUFYR",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUALD", },
+			{ 197, 197, 197, 197, 188, 191, 192, 193, 189, 197, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
+			{ 186, 197, 197, 197, 187, 195, },
+			{ 186, 197, 197, 197, 188, 191, 192, 193, 189, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
+			{ 184, 159, 166, 175, 174, 158, 177, 196, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
+			{ 195, 187, 188, 191, 192, 193, 189, 197, 190, 194, 94, 83, 80, 136, 134, 197, 197, 133, 197, 197, 132, },
 		}
 	},
 	{
 		"Victoria",
 		{
-			{ "940GZZLUBXN",  "940GZZLUSKW",  "940GZZLUVXL",  "940GZZLUPCO",  "940GZZLUVIC",  "940GZZLUGPK",  "940GZZLUOXC",  "940GZZLUWRR",  "940GZZLUEUS",  "940GZZLUKSX",  "940GZZLUHAI",  "940GZZLUFPK",  "940GZZLUSVS",  "940GZZLUTMH",  "940GZZLUBLR",  "940GZZLUWWL", },
+			{ 198, 123, 198, 197, 198, 84, 24, 131, 198, 198, 198, 198, 198, 198, 198, 198, },
 		}
 	},
 	{
 		"Hammersmith & City",
 		{
-			{ "940GZZLUHSC",  "940GZZLUGHK",  "940GZZLUSBM",  "940GZZLUWLA",  "940GZZLULRD",  "940GZZLULAD",  "940GZZLUWSP",  "940GZZLURYO",  "940GZZLUPAH",  "940GZZLUERC",  "940GZZLUBST",  "940GZZLUGPS",  "940GZZLUESQ",  "940GZZLUKSX",  "940GZZLUFCN",  "940GZZLUBBN",  "940GZZLUMGT",  "940GZZLULVT",  "940GZZLUADE",  "940GZZLUWPL",  "940GZZLUSGN",  "940GZZLUMED",  "940GZZLUBWR",  "940GZZLUBBB",  "940GZZLUWHM",  "940GZZLUPLW",  "940GZZLUUPK",  "940GZZLUEHM",  "940GZZLUBKG", },
+			{ 198, 135, 140, 141, 138, 137, 142, 139, 198, 54, 80, 136, 134, 198, 198, 133, 198, 198, 39, 198, 67, 19, 43, 40, 198, 61, 75, 50, 198, },
 		}
 	},
 };

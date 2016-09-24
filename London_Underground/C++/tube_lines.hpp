@@ -3,9 +3,8 @@
 
 #include <string>
 #include <vector>
-#include <map>
 
-using route_t = std::vector<std::string>;
+using route_t = std::vector<int>;
 
 struct line_t
 {
@@ -13,7 +12,7 @@ struct line_t
   std::vector<route_t> routes;
 };
 
-extern std::map<std::string, std::string> const stations;
+extern std::vector<std::string> const stations;
 extern std::vector<line_t> const lines;
 
 #endif
