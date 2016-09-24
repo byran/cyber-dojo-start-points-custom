@@ -1,17 +1,17 @@
 The London Underground can be confusing to navigate to newcomers. Create
 a system that given a start station and destination station outputs the shortest
-route between the two stations.
+journey between the two stations.
 
-Remember the Circle line loops whereas all other lines do not.
+Remember the Circle line's route loops whereas all other lines do not.
 
-The shortest route is defined as:
+The shortest journey is defined as:
 * Passing through the least number of stations
-* Having the least number of line/route changes
+* Having the least number of train changes
 
 Assumptions:
-* The distance between consecutive stations on a line is the same
-* All trains run the entire length of the line (no trains terminate before
-  the final station of the line)
+* The distance between consecutive stations on a line's route is the same
+* All trains run the entire length of their respective route (no trains
+  terminate before the final station of the route)
 
 A pdf of the London Underground map can be found at:
 http://content.tfl.gov.uk/standard-tube-map.pdf
