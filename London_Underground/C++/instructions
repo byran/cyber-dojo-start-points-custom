@@ -6,7 +6,7 @@ Remember the Circle line loops whereas all other lines do not.
 
 The shortest route is defined as:
 * Passing through the least number of stations
-* Having the least number of line changes
+* Having the least number of line/route changes
 
 Assumptions:
 * The distance between consecutive stations on a line is the same

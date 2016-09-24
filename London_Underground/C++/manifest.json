@@ -1,8 +1,8 @@
 {
   "visible_filenames": [
-    "hiker.cpp",
-    "hiker.hpp",
-    "hiker.tests.cpp",
+    "route_finder.cpp",
+    "route_finder.hpp",
+    "route_finder.tests.cpp",
     "tube_lines.cpp",
     "tube_lines.hpp",
     "instructions",
