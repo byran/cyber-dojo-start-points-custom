@@ -1,0 +1,15 @@
+{
+  "visible_filenames": [
+    "order.cpp",
+    "order.hpp",
+    "order.tests.cpp",
+    "removable_inventory.hpp",
+    "instructions",
+    "makefile",
+    "cyber-dojo.sh"
+  ],
+  "display_name": "C++ Test Doubles, Fulfil Order",
+  "image_name": "cyberdojofoundation/clangpp_googlemock",
+  "filename_extension": ".cpp",
+  "tab_size": 4
+}

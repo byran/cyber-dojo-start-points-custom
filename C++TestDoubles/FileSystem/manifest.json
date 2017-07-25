@@ -1,0 +1,15 @@
+{
+  "visible_filenames": [
+    "shape_storage.cpp",
+    "shape_storage.hpp",
+    "shape_storage.tests.cpp",
+    "shape.hpp",
+    "instructions",
+    "makefile",
+    "cyber-dojo.sh"
+  ],
+  "display_name": "C++ Test Doubles, File System",
+  "image_name": "cyberdojofoundation/clangpp_googlemock",
+  "filename_extension": ".cpp",
+  "tab_size": 4
+}
