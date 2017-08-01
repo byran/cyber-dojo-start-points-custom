@@ -1,1 +1,2 @@
-Write functions to save to disk and load from disk shape objects
+Write functions to save shape objects to disk
+and load shape objects from disk
