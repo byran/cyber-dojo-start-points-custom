@@ -1,0 +1,7 @@
+Update the Order class to allow items to be added to the order.
+
+Implement the Order classes Fulfil method. If all the items are in stock
+then remove them from the removable_inventory and indicate that the order
+was fulfilled successfully. If any of the items are out of stock then do
+not remove any thing form the removable_inventory and indicate that the
+order was not fulfilled.
