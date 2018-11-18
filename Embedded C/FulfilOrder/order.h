@@ -4,12 +4,18 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-struct OrderItem
+typedef struct
 {
-	unsigned int number;
-	char const* item;
-}
+    unsigned int number;
+    char const* item;
+} OrderItem;
 
-bool FulfilOrder(OrderItem* items, size_t numberOfItems);
+typedef struct
+{
+    OrderItem items[10];
+    size_t numberOfItems;
+} Order;
+
+bool FulfilOrder(Order* order);
 
 #endif

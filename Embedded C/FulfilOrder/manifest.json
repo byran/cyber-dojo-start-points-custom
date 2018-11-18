@@ -5,13 +5,14 @@
     "order.c",
     "order.h",
     "order.tests.c",
-    "removable_inventory.h",
+    "stock.h",
+    "fff.h",
     "instructions",
     "makefile",
     "cyber-dojo.sh"
   ],
 
-  "filename_extension": ".c",
+  "filename_extension": [ ".c", ".h" ],
 
   "image_name": "cyberdojofoundation/gcc_unity",
 

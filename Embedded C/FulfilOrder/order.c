@@ -1,8 +1,9 @@
 #include "order.h"
+#include "stock.h"
 
-bool FulfilOrder(OrderItem* items, size_t numberOfItems)
+bool FulfilOrder(Order* order)
 {
-  (void)items;
-  (void)numberOfItems;
-  return false;
+    StockItemIsAvailable(1, "Orange");
+    (void)order;
+    return false;
 }
