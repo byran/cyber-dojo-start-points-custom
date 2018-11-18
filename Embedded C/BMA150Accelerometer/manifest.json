@@ -1,0 +1,23 @@
+{
+  "display_name": "C Test Doubles, BMA150 Accelerometer",
+
+  "visible_filenames": [
+    "BMA150.c",
+    "BMA150.h",
+    "BMA150.tests.c",
+    "main.c",
+    "stm32f4xx_hal_i2c_ex.h",
+    "stm32f4xx_hal_i2c.h",
+    "stm32f4xx_hal.h",
+    "fff.h",
+    "instructions",
+    "makefile",
+    "cyber-dojo.sh"
+  ],
+
+  "filename_extension": [ ".c", ".h" ],
+
+  "image_name": "cyberdojofoundation/gcc_unity_fixture_stm32f4xxhal",
+
+  "runner_choice":"stateless"
+}

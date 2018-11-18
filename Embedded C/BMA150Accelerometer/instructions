@@ -1,0 +1,33 @@
+Write a function to read the acceleration from a
+BMA150 accelerometer. The function should indicate
+if reading the device fails.
+
+The BMA150 accelerometer is an I2C device.
+
+Its has an address of 0x38.
+
+The acceleration is stored in registers 0x02 to 0x07
+as follows:
+
+Register 0x02 - X acceleration
+    bit  0 - new data
+    bits 1-5 - unused
+    bits 6-7 - acceleration lsb
+
+Register 0x03 - X acceleration
+    bits 0-8 acceleration msb
+
+Registers 0x04 & 0x05 - Y acceleration
+    As per the X acceleration registers
+
+Registers 0x04 & 0x05 - Z acceleration
+    As per the X acceleration registers
+
+To read the acceleration you must first write the
+register to start reading from and then read the
+registers.
+
+To communicate with the device use the following
+functions from the HAL:
+* HAL_I2C_Master_Transmit
+* HAL_I2C_Master_Receive
