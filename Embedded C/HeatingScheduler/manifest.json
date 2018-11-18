@@ -1,0 +1,21 @@
+{
+  "display_name": "C Test Doubles, Heating Scheduler",
+
+  "visible_filenames": [
+    "heating_scheduler.c",
+    "heating_scheduler.h",
+    "heating_scheduler.tests.c",
+    "boiler.h",
+    "rtc.h",
+    "fff.h",
+    "instructions",
+    "makefile",
+    "cyber-dojo.sh"
+  ],
+
+  "filename_extension": [ ".c", ".h" ],
+
+  "image_name": "cyberdojofoundation/gcc_unity",
+
+  "runner_choice":"stateless"
+}

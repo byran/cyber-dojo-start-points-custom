@@ -1,0 +1,5 @@
+Implement a heating scheduler that allows the heating
+to be turned on/off at user configurable times.
+
+The scheduler should turn the boiler on/off at the
+relevant time.
